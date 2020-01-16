@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Simon Says</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <main class="canvas">
+    <section class="board">
+      <div id="0" class="board__section green"></div>
+      <div id="1" class="board__section red"></div>
+      <div id="2" class="board__section yellow"></div>
+      <div id="3" class="board__section blue"></div>
+      <div class="board__inner">
+        <div class="board__controls">
+          <h1 id="playBtn" class="board__controls-start">
+            <i class="fas fa-play"></i>
+          </h1>
+        </div>
+        <div class="board__controls-score is-hidden">
+          <h1>1</h1>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="dist/main.js" defer></script>
+</body>
+
+</html>

@@ -1,6 +1,3 @@
-import firebase from 'firebase/app';
-import 'firebase/database';
-
 const firebaseConfig = {
     apiKey: "AIzaSyAH5opnXbXMVyfsY3nNkZeYIfZe0vcCYOI",
     authDomain: "pi-simonsays.firebaseapp.com",
@@ -9,8 +6,9 @@ const firebaseConfig = {
     storageBucket: "pi-simonsays.appspot.com",
     messagingSenderId: "773228748604",
     appId: "1:773228748604:web:50fdb3dc22bd9f80ff8839"
-};
+}
 
 export const initFirebase = () => {
-    if(firebaseConfig) firebase.initializeApp(firebaseConfig);
-};
+    // if(firebaseConfig) firebase.initializeApp(firebaseConfig);
+    console.log('dfgmùdflms')
+}

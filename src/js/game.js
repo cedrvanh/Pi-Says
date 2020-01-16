@@ -1,5 +1,9 @@
 export default class Game {
-  init() {
-    console.log('Init game')
-  }
+    constructor(name) {
+        this.name = name;
+    }
+    
+    init = () => {
+        console.log(`Starting the ${this.name} game`);
+    }
 }

@@ -1,2 +1,12 @@
-@import 'variables';
-@import 'components/board';
+// Utilities
+@import './utils/variables';
+
+// Vendors
+@import './vendors/fontawesome';
+
+// Base
+@import './base/typography';
+@import './base/common';
+
+// Components
+@import './components/board';
