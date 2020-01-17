@@ -34,24 +34,45 @@
     background: $background-color;
 }
 
+.board__controls {
+    &-start {
+        cursor: pointer;
+    }
+}
 .green {
     border-top-left-radius: 100%;
     background: $button-green-color;
+
+    &--active {
+        background: lighten($button-green-color, 20);
+    }
 }
 
 .red {
     border-top-right-radius: 100%;
     background: $button-red-color;
+
+    &--active {
+        background: lighten($button-red-color, 20);
+    }
 }
 
 .blue {
     border-bottom-right-radius: 100%;
     background: $button-blue-color;
+
+    &--active {
+        background: lighten($button-blue-color, 20);
+    }
 }
 
 .yellow {
     border-bottom-left-radius: 100%;
     background: $button-yellow-color;
+
+    &--active {
+        background: lighten($button-yellow-color, 20);
+    }
 }
 
 .is-hidden {
