@@ -47,7 +47,7 @@ export default class Sequence {
             if (i >= this.pattern.length) {
                 clearInterval(sequenceInterval);
             }
-        }, delay * 2);
+        }, delay * 3);
     }
 
     reset() {
