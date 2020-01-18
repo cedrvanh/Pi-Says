@@ -22,10 +22,6 @@ let player = [];
     watchData('player').then(res => {
         player = res.pattern;
     });
-
-    saveData('sequence', { 
-        pattern: sequence
-    });
 })();
 
 const game = new Game(sequence, player);
