@@ -1,11 +1,3 @@
-.canvas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-}
-
 .board {
     position: relative;
     display: flex;
@@ -73,8 +65,4 @@
     &--active {
         background: lighten($button-yellow-color, 20);
     }
-}
-
-.is-hidden {
-    display: none;
 }
