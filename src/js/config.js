@@ -14,3 +14,21 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
+
+export const getData = async (field) => {
+    const doc = await db.collection('game').doc(field).get();
+    return doc.data();
+}
+
+export const watchData = async (field) => {
+    return new Promise((resolve, reject) => {
+        db.collection('game').doc(field).onSnapshot(doc => {
+                const data = doc.data();
+                resolve(data);
+            }, reject)
+    })
+}
+
+export const saveData = async (field, data) => {
+    await db.collection('game').doc(field).update(data);
+}

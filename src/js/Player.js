@@ -1,3 +1,5 @@
+import { saveData } from './Config';
+
 export default class Player {
     constructor(pattern = []) {
         this.pattern = pattern;
@@ -5,5 +7,8 @@ export default class Player {
 
     reset() {
         this.pattern = [];
+        saveData('player', {
+            pattern: this.pattern
+        });
     }
 }

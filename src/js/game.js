@@ -2,16 +2,17 @@ import { toggleClass, delay } from './utils';
 import Sequence from './Sequence';
 import Player from './Player';
 import Score from './Score';
+import { saveData } from './Config';
 
 let buttons = document.querySelectorAll('.board__section');
 let playControl = document.querySelector('.board__controls-start');
 let scoreControl = document.querySelector('.board__controls-score');
 
 export default class Game {
-    constructor() {
+    constructor(sequence, player) {
         this.hasStarted = false;
-        this.sequence = new Sequence();
-        this.player = new Player();
+        this.sequence = new Sequence(sequence);
+        this.player = new Player(player);
         this.score = new Score();
     }
 
@@ -40,6 +41,9 @@ export default class Game {
 
     handleInput(id) {
         this.player.pattern.push(id);
+        saveData('player', {
+            pattern: this.player.pattern
+        });
         this.sequence.play(id);
 
         if (this.sequence.pattern[this.player.pattern.length - 1] == this.player.pattern[this.player.pattern.length - 1]) {

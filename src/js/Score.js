@@ -1,4 +1,4 @@
-import { db } from './config';
+import { db } from './Config';
 
 let scoreControl = document.querySelector('.board__controls-score');
 

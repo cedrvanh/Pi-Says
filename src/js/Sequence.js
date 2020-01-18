@@ -1,4 +1,5 @@
-import { getRandomNumber, toggleButton, getColorById, delay } from './utils';
+import { getRandomNumber, toggleButton, getColorById, delay } from './Utils';
+import { saveData } from './Config';
 import Sound from './Sound';
 
 const audioFiles = [
@@ -17,6 +18,9 @@ export default class Sequence {
     init() {
         const newSequence = getRandomNumber();
         this.pattern.push(newSequence);
+        saveData('sequence', {
+            pattern: this.pattern
+        });
         this.play(newSequence);
     }
 
@@ -29,6 +33,9 @@ export default class Sequence {
     next() {
         const nextSequence = getRandomNumber();
         this.pattern.push(nextSequence);
+        saveData('sequence', {
+            pattern: this.pattern
+        });
         this.show();
     }
 
@@ -45,5 +52,8 @@ export default class Sequence {
 
     reset() {
         this.pattern = [];
+        saveData('sequence', {
+            pattern: this.pattern
+        });
     }
 }
