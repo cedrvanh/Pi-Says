@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAH5opnXbXMVyfsY3nNkZeYIfZe0vcCYOI",
@@ -15,12 +16,14 @@ firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
 
+export const auth = firebase.auth();
+
 export const getData = async (field) => {
     const doc = await db.collection('game').doc(field).get();
     return doc.data();
 }
 
-export const watchData = async (field) => {
+export const watchData = (field) => {
     return new Promise((resolve, reject) => {
         db.collection('game').doc(field).onSnapshot(doc => {
                 const data = doc.data();
@@ -31,4 +34,8 @@ export const watchData = async (field) => {
 
 export const saveData = async (field, data) => {
     await db.collection('game').doc(field).update(data);
+}
+
+export const login = (email, password) => {
+    auth.signInWithEmailAndPassword(email, password).catch(err => console.log(err));
 }

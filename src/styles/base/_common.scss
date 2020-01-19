@@ -6,9 +6,19 @@
 
 html,
 body {
-    background: $background-color;
+    background: $primary-color;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .is-hidden {
-    display: none;
+    display: none !important;
 }

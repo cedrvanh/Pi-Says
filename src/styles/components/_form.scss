@@ -1,0 +1,36 @@
+.form {
+    width: 100%;
+    max-width: 350px;
+}
+
+.form-group {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    flex: 1;
+    height: 50px;
+    padding: 1rem;
+    border-radius: $border-radius;
+    border: 3px solid #fff;
+    font-weight: bold;
+
+    &::placeholder {
+        color: $primary-color;
+        opacity: 0.7;
+    }
+}
+
+.is-invalid {
+    border: 3px solid $button-red-color;
+
+    &::placeholder {
+        color: $button-red-color;
+    }
+}
+
+.error {
+    color: $button-red-color;
+}
