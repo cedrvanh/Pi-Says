@@ -16,16 +16,22 @@ export default class Score {
 
     async save() {
         const uid = this._db.getUserID();
-
         const doc = await db.collection('users').doc(uid).get();
         const { highscore } = doc.data();
+        
         if (this.score > highscore) {
             console.log('You beat your highscore!');
-            await db.collection('game').doc('highscore').update({
-                amount: this.score
+            await db.collection('users').doc(uid).update({
+                highscore: this.score
             });
         } else {
             console.log('You did not beat your highscore');
         }
+
+        this.reset();
+    }
+
+    reset() {
+        this.score = 0;
     }
 }

@@ -8,8 +8,7 @@ export default class Database {
         this.auth = firebase.auth();
     }
 
-
-    getData = async (uid, query) => {
+    getData = async (uid) => {
         const doc = await this.db.collection('users').doc(uid).get();
         return doc.data();
     }

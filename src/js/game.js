@@ -1,4 +1,5 @@
-import { toggleClass } from './utils';
+import { toggleClass, getColorById } from './utils';
+
 import Sequence from './Sequence';
 import Player from './Player';
 import Score from './Score';
@@ -65,12 +66,8 @@ export default class Game {
 
     lost() {
         this.sequence.reset();
+        this.player.reset();
         this.score.save();
-
-        // buttons.forEach(button => { 
-        //     const id = JSON.parse(button.id);
-        //     const color = getColorById(id);
-        //     button.classList.add(`${color}--disabled`);
-        // });
+        this.sound.lost();
     }
 }

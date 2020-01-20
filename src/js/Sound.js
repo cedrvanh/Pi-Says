@@ -1,7 +1,7 @@
 export default class Sound {
     constructor(path = []) {
         this.path = path;
-        this.lost = 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.mp3';
+        this.lostAudio = 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.mp3';
     }
 
     play(id) {
@@ -11,7 +11,7 @@ export default class Sound {
     }
 
     lost() {
-        const audio = new Audio(this.lost);
+        const audio = new Audio(this.lostAudio);
         audio.volume = 0.1;
         audio.play();
     }

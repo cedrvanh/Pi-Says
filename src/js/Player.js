@@ -1,4 +1,3 @@
-import { saveData } from './Config';
 import Database from './Database';
 
 export default class Player {
