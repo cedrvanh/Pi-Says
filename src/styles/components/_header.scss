@@ -1,5 +1,5 @@
 .header {
-    z-index: 999;
+    z-index: 99;
     position: absolute;
     top: 0;
     left: 0;
@@ -8,4 +8,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &__icons {
+        display: flex;
+
+        h4 {
+            margin-left: 2rem;
+            cursor: pointer;
+        }
+    }
 }

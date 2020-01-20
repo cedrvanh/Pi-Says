@@ -5,11 +5,20 @@
     width: 600px;
     height: 600px;
     border-radius: 100%;
+
+    @media screen and (max-width: 680px) {
+        width: 400px;
+        height: 400px;
+    }
 }
 
 .board__section {
     flex: 0 0 50%;
     height: 300px;
+
+    @media screen and (max-width: 680px) {
+        height: 200px;
+    }
 }
 
 .board__inner {
@@ -24,6 +33,11 @@
     height: 300px;
     border-radius: 100%;
     background: $primary-color;
+
+    @media screen and (max-width: 680px) {
+        width: 200px;
+        height: 200px;
+    }
 }
 
 .board__controls {

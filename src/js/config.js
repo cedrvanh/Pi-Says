@@ -15,27 +15,26 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
-
 export const auth = firebase.auth();
 
-export const getData = async (field) => {
-    const doc = await db.collection('game').doc(field).get();
-    return doc.data();
-}
+// export const getData = async (field) => {
+//     const doc = await db.collection('game').doc(field).get();
+//     return doc.data();
+// }
 
-export const watchData = (field) => {
-    return new Promise((resolve, reject) => {
-        db.collection('game').doc(field).onSnapshot(doc => {
-                const data = doc.data();
-                resolve(data);
-            }, reject)
-    })
-}
+// export const watchData = (field) => {
+//     return new Promise((resolve, reject) => {
+//         db.collection('game').doc(field).onSnapshot(doc => {
+//                 const data = doc.data();
+//                 resolve(data);
+//             }, reject)
+//     })
+// }
 
-export const saveData = async (field, data) => {
-    await db.collection('game').doc(field).update(data);
-}
+// export const saveData = async (field, data) => {
+//     await db.collection('game').doc(field).update(data);
+// }
 
-export const login = (email, password) => {
-    auth.signInWithEmailAndPassword(email, password).catch(err => console.log(err));
-}
+// export const login = (email, password) => {
+//     auth.signInWithEmailAndPassword(email, password).catch(err => console.log(err));
+// }

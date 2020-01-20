@@ -6,6 +6,9 @@ import './styles/main.scss';
 
 let loginForm = document.querySelector('.login');
 let loginBtn = document.querySelector('#loginBtn');
+let logoutBtn = document.querySelector('#logoutBtn');
+let leaderBoardBtn = document.querySelector('#leaderBoardBtn');
+let leaderBoardClose = document.querySelector('#leaderBoardClose');
 let guestBtn = document.querySelector('.login__guest');
 
 const _db = new Database();
@@ -16,7 +19,7 @@ const initApp = () => {
     let sequence = [];
     let player = [];
     const uid = _db.getUserID();
-
+    renderLeaderBoard()
     _db.watchData(uid).then(res => {
         highscoreSpan.innerHTML = res.highscore;
         sequence = res.sequence_pattern;
@@ -27,12 +30,41 @@ const initApp = () => {
     playControl.addEventListener('click', () => game.init());
 }
 
+const pushLeaderBoard = () => {
+    let container = document.querySelector('.container');
+    let leaderboard = document.querySelector('.leaderboard');
+    container.classList.add('container--push');
+    leaderboard.classList.add('leaderboard--push');
+}
+
+const closeLeaderBoard = () => {
+    let container = document.querySelector('.container');
+    let leaderboard = document.querySelector('.leaderboard');
+    container.classList.remove('container--push');
+    leaderboard.classList.remove('leaderboard--push');
+}
+
+const renderLeaderBoard = async () => {
+    let list = document.querySelector('.leaderboard__list');
+    const scores = await _db.getScores();
+
+    scores.forEach((score, index) => {
+        list.innerHTML += `
+            <li class="leaderboard__list-item">
+                #${index + 1}: ${score.highscore} Points
+            </li>
+        `;
+    });
+}
+
 const handleLogin = () => {
     let errors = [];
     const email = document.querySelector('#email');
     const password = document.querySelector('#password');
 
-    _db.login(email.value, password.value).catch(err => {
+    _db.login(email.value, password.value).then(() => {
+        location.reload()
+    }).catch(err => {
         errors.push(err);
         displayErrors(errors);
     })
@@ -41,10 +73,22 @@ const handleLogin = () => {
 const handleAnonymousLogin = () => {
     let errors = []
 
-    _db.loginAnonymous().catch(err => {
+    _db.loginAnonymous().then(() => {
+        _db.getAuthState().then(user => {
+            _db.createUser(user.uid).then(() => {
+                location.reload()
+            })
+        })
+    }).catch(err => {
         errors.push(err);
         displayErrors(errors);
     })
+}
+
+const handleLogout = () => {
+    _db.logout().then(() => {
+        location.reload();
+    }).catch(err => console.log(err));
 }
 
 const displayErrors = (errors) => {
@@ -69,4 +113,7 @@ _db.getAuthState().then(user => {
 });
 
 loginBtn.addEventListener('click', handleLogin);
+logoutBtn.addEventListener('click', handleLogout);
 guestBtn.addEventListener('click', handleAnonymousLogin);
+leaderBoardBtn.addEventListener('click', pushLeaderBoard);
+leaderBoardClose.addEventListener('click', closeLeaderBoard);

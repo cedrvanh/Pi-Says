@@ -9,49 +9,62 @@
 </head>
 
 <body>
-  <div id="root"></div>
-  <header class="header">
-    <h4>Highscore: <span class="highscore"></span></h4>
-    <h4><i class="fas fa-bars"></i></h4>
-  </header>
-  <main class="canvas">
-    <section class="board">
-      <div id="0" class="board__section green"></div>
-      <div id="1" class="board__section red"></div>
-      <div id="2" class="board__section yellow"></div>
-      <div id="3" class="board__section blue"></div>
-      <div class="board__inner">
-        <div class="board__controls">
-          <h1 class="board__controls-start">
-            <i class="fas fa-play"></i>
-          </h1>
-          <h1 class="board__controls-score is-hidden">
-            0
-          </h1>
+  <div class="container">
+    <header class="header">
+      <h4>Highscore: <span class="highscore"></span></h4>
+      <div class="header__icons">
+        <h4 id="leaderBoardBtn"><i class="fas fa-trophy"></i></h4>
+        <h4 id="logoutBtn"><i class="fas fa-sign-out-alt"></i></h4>
+      </div>
+    </header>
+    <main class="canvas canvas--push">
+      <section class="board">
+        <div id="0" class="board__section green"></div>
+        <div id="1" class="board__section red"></div>
+        <div id="2" class="board__section yellow"></div>
+        <div id="3" class="board__section blue"></div>
+        <div class="board__inner">
+          <div class="board__controls">
+            <h1 class="board__controls-start">
+              <i class="fas fa-play"></i>
+            </h1>
+            <h1 class="board__controls-score is-hidden">
+              0
+            </h1>
+          </div>
         </div>
+      </section>
+    </main>
+
+    <section class="leaderboard">
+      <div class="leaderboard__container">
+          <h4 id="leaderBoardClose"><i class="fas fa-times"></i></h4>
+          <h3>Leaderboard (Top 10)</h3>
+          <div class="leaderboard__divider"></div>
+          <ul class="leaderboard__list"></ul>
       </div>
     </section>
-  </main>
 
-  <section class="login">
-    <div class="login__title">
-      <h2>Pi Says</h2>
-      <h5>Browser Game</h5>
-    </div>
-    <div class="form">
-      <div class="form-group">
-        <input type="text" id="email" class="form-control" placeholder="Enter your username" />
+    <section class="login">
+      <div class="login__title">
+        <h2>Pi Says</h2>
+        <h5>Browser Game</h5>
       </div>
-      <div class="form-group">
-        <input type="password" id="password" class="form-control" placeholder="Enter your password" />
+      <div class="form">
+        <div class="form-group">
+          <input type="text" id="email" class="form-control" placeholder="Enter your username" />
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" class="form-control" placeholder="Enter your password" />
+        </div>
+        <div class="errors">
+        </div>
+        <a href="#" id="loginBtn" class="btn btn--primary">Login</a>
       </div>
-      <div class="errors">
-      </div>
-      <a href="#" id="loginBtn" class="btn btn--primary">Login</a>
-    </div>
-    <div class="login__divider"></div>
-    <a href="#" class="login__guest">Play as guest</a>
-  </section>
+      <div class="login__divider"></div>
+      <a href="#" class="login__guest">Play as guest</a>
+    </section>
+  </div>
   <script src="dist/main.js" defer></script>
 </body>
 

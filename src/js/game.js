@@ -1,8 +1,7 @@
-import { toggleClass, delay, getColorById } from './utils';
+import { toggleClass } from './utils';
 import Sequence from './Sequence';
 import Player from './Player';
 import Score from './Score';
-import { saveData } from './Config';
 import Sound from './Sound';
 import Database from './Database';
 

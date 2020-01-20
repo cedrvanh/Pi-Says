@@ -1,5 +1,4 @@
 import { getRandomNumber, toggleButton, getColorById, delay } from './Utils';
-import { saveData } from './Config';
 import Sound from './Sound';
 import Database from './Database';
 

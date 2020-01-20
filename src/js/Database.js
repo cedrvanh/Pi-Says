@@ -8,9 +8,17 @@ export default class Database {
         this.auth = firebase.auth();
     }
 
-    getData = async (uid) => {
+
+    getData = async (uid, query) => {
         const doc = await this.db.collection('users').doc(uid).get();
         return doc.data();
+    }
+
+    getScores = async () => {
+        const snapshot = await this.db.collection('users').where('highscore', '>', 0).orderBy('highscore', 'desc').limit(10).get()
+        return snapshot.docs.map(doc => {
+            return doc.data();
+        });
     }
 
     watchData = (uid) => {
@@ -34,11 +42,23 @@ export default class Database {
         await this.auth.signInAnonymously();
     }
 
+    logout = async () => {
+        await this.auth.signOut();
+    }
+
     getAuthState = () => {
         return new Promise((resolve, reject) => {
             this.auth.onAuthStateChanged(user => {
                 resolve(user);
             }, reject)
+        })
+    }
+
+    createUser = async (uid) => {
+        await this.db.collection('users').doc(uid).set({
+            highscore: 0,
+            player_pattern: [],
+            sequence_pattern: []
         })
     }
 
