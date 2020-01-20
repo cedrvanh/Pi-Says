@@ -38,6 +38,10 @@
     &--active {
         background: lighten($button-green-color, 20);
     }
+
+    &--disabled {
+        background: darken($button-green-color, 20);
+    }
 }
 
 .red {
@@ -46,6 +50,10 @@
 
     &--active {
         background: lighten($button-red-color, 20);
+    }
+
+    &--disabled {
+        background: darken($button-red-color, 20);
     }
 }
 
@@ -56,6 +64,10 @@
     &--active {
         background: lighten($button-blue-color, 20);
     }
+
+    &--disabled {
+        background: darken($button-blue-color, 20);
+    }
 }
 
 .yellow {
@@ -64,5 +76,9 @@
 
     &--active {
         background: lighten($button-yellow-color, 20);
+    }
+
+    &--disabled {
+        background: darken($button-yellow-color, 20);
     }
 }

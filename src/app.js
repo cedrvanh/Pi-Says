@@ -1,6 +1,5 @@
 import Game from './js/Game';
 import Database from './js/Database';
-import { watchData } from './js/Config';
 
 import '@fortawesome/fontawesome-free/js/all.js';
 import './styles/main.scss';
@@ -16,18 +15,12 @@ const initApp = () => {
     let highscoreSpan = document.querySelector('.highscore');
     let sequence = [];
     let player = [];
+    const uid = _db.getUserID();
 
-    _db.watchData('highscore').then(res => {
-        const { amount: highscore } = res;
-        highscoreSpan.innerHTML = highscore;
-    });
-
-    _db.watchData('sequence').then(res => {
-        sequence = res.pattern;
-    });
-
-    _db.watchData('player').then(res => {
-        player = res.pattern;
+    _db.watchData(uid).then(res => {
+        highscoreSpan.innerHTML = res.highscore;
+        sequence = res.sequence_pattern;
+        player = res.player_pattern;
     });
 
     const game = new Game(sequence, player);

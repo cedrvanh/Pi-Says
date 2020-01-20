@@ -1,8 +1,10 @@
-import { toggleClass, delay } from './utils';
+import { toggleClass, delay, getColorById } from './utils';
 import Sequence from './Sequence';
 import Player from './Player';
 import Score from './Score';
 import { saveData } from './Config';
+import Sound from './Sound';
+import Database from './Database';
 
 let buttons = document.querySelectorAll('.board__section');
 let playControl = document.querySelector('.board__controls-start');
@@ -14,6 +16,9 @@ export default class Game {
         this.sequence = new Sequence(sequence);
         this.player = new Player(player);
         this.score = new Score();
+        this.sound = new Sound();
+        this._db = new Database();
+        this.uid = this._db.getUserID();
     }
 
     init() {
@@ -41,9 +46,9 @@ export default class Game {
 
     handleInput(id) {
         this.player.pattern.push(id);
-        saveData('player', {
-            pattern: this.player.pattern
-        });
+        this._db.updateData(this.uid, {
+            player_pattern: this.player.pattern
+        })
         this.sequence.play(id);
 
         if (this.sequence.pattern[this.player.pattern.length - 1] == this.player.pattern[this.player.pattern.length - 1]) {
@@ -55,8 +60,18 @@ export default class Game {
             }
         } else {
             console.log('Wrong move, try again');
-            this.sequence.reset();
-            this.score.save();
+            this.lost();
         }
+    }
+
+    lost() {
+        this.sequence.reset();
+        this.score.save();
+
+        // buttons.forEach(button => { 
+        //     const id = JSON.parse(button.id);
+        //     const color = getColorById(id);
+        //     button.classList.add(`${color}--disabled`);
+        // });
     }
 }

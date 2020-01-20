@@ -8,22 +8,22 @@ export default class Database {
         this.auth = firebase.auth();
     }
 
-    getData = async (field) => {
-        const doc = await this.db.collection('game').doc(field).get();
+    getData = async (uid) => {
+        const doc = await this.db.collection('users').doc(uid).get();
         return doc.data();
     }
 
-    watchData = (field) => {
+    watchData = (uid) => {
         return new Promise((resolve, reject) => {
-            this.db.collection('game').doc(field).onSnapshot(doc => {
+            this.db.collection('users').doc(uid).onSnapshot(doc => {
                 const data = doc.data();
                 resolve(data);
             }, reject)
         })
     }
 
-    updateData = async (field, data) => {
-        await this.db.collection('game').doc(field).update(data);
+    updateData = async (uid, data) => {
+        await this.db.collection('users').doc(uid).update(data);
     }
 
     login = async (email, password) => {
@@ -40,5 +40,9 @@ export default class Database {
                 resolve(user);
             }, reject)
         })
+    }
+
+    getUserID = () => {
+        return this.auth.currentUser.uid
     }
 }
