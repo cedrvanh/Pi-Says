@@ -25,12 +25,12 @@ export default class Score {
             await this._db.updateData(this.uid, {
                 highscore: this.score
             })
-            highscoreNotification.innerHTML += `
+            highscoreNotification.innerHTML = `
                 You beat your highscore! <i class="fas fa-laugh-beam"></i> 
             `
         } else {
             console.log('You did not beat your highscore');
-            highscoreNotification.innerHTML += `
+            highscoreNotification.innerHTML = `
                 You did not beat your highscore! <i class="fas fa-thumbs-down"></i> 
             `
         }
