@@ -19,7 +19,8 @@ const initApp = () => {
     let sequence = [];
     let player = [];
     const uid = _db.getUserID();
-    renderLeaderBoard()
+    renderLeaderBoard();
+    
     _db.watchData(uid).then(res => {
         highscoreSpan.innerHTML = res.highscore;
         sequence = res.sequence_pattern;
