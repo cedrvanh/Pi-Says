@@ -1,10 +1,9 @@
-import { toggleClass, getColorById } from './utils';
-
 import Sequence from './Sequence';
 import Player from './Player';
 import Score from './Score';
 import Sound from './Sound';
 import Database from './Database';
+import { toggleClass } from './utils';
 
 let buttons = document.querySelectorAll('.board__section');
 let playControl = document.querySelector('.board__controls-start');
@@ -36,12 +35,14 @@ export default class Game {
     }
 
     initButtonListeners() {
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const id = JSON.parse(button.id);
-                this.handleInput(id);
+        if(!this.hasStarted) {
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = JSON.parse(button.id);
+                    this.handleInput(id);
+                });
             });
-        });
+        }
     }
 
     handleInput(id) {
@@ -69,5 +70,6 @@ export default class Game {
         this.player.reset();
         this.score.save();
         this.sound.lost();
+        this.initButtonClasses();
     }
 }

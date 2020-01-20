@@ -5,13 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Pi Says</title>
+  <title>Simon Memory Game</title>
 </head>
 
 <body>
   <div class="container">
     <header class="header">
-      <h4>Highscore: <span class="highscore"></span></h4>
+      <div class="header__score">
+          <h4>Highscore: <span class="highscore"></span></h4>
+          <h5 class="highscore__notification"></h5>
+      </div>
       <div class="header__icons">
         <h4 id="leaderBoardBtn"><i class="fas fa-trophy"></i></h4>
         <h4 id="logoutBtn"><i class="fas fa-sign-out-alt"></i></h4>
@@ -37,8 +40,10 @@
     </main>
 
     <section class="leaderboard">
-      <div class="leaderboard__container">
+      <div class="leaderboard__header">
           <h4 id="leaderBoardClose"><i class="fas fa-times"></i></h4>
+      </div>
+      <div class="leaderboard__container">
           <h3>Leaderboard (Top 10)</h3>
           <div class="leaderboard__divider"></div>
           <ul class="leaderboard__list"></ul>
@@ -47,7 +52,7 @@
 
     <section class="login">
       <div class="login__title">
-        <h2>Pi Says</h2>
+        <h2>Pi Memory Game</h2>
         <h5>Browser Game</h5>
       </div>
       <div class="form">

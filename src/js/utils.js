@@ -1,4 +1,4 @@
-export const delay = 500;
+export const delay = 350;
 
 export const getRandomNumber = () => Math.floor(Math.random() * 4);
 

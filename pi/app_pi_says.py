@@ -87,15 +87,18 @@ def get_button(id):
 def activate_led(id):
     led = get_led(id)
     led.on()
-    sleep(1)
+    sleep(.5)
     led.off()
 
 # Starts first sequence
 def init_sequence():
     # If web app didn't exist, you could start the game via your Pi
-    # new_sequence = get_random_number()
-    # sequence_pattern.append(new_sequence)
-    play_sequence(sequence_pattern)
+    new_sequence = get_random_number()
+    sequence_pattern.append(new_sequence)
+    game_ref.update({
+        u'sequence_pattern': sequence_pattern
+    })
+    show_sequence()
 
 # Plays current sequence
 def play_sequence(id):
@@ -115,7 +118,7 @@ def next_sequence():
 def show_sequence():
     for i in range(len(sequence_pattern)):
         play_sequence(sequence_pattern[i])
-        sleep(1)
+        sleep(.5)
 
 # Empties array and reset sequence
 def reset_sequence():
@@ -186,7 +189,7 @@ def lost_game():
     reset_player()
 
 # Starts game through Pi
-# init_sequence()
+init_sequence()
 
 # Firestore data watcher and updates patterns
 game_ref.on_snapshot(on_snapshot)
